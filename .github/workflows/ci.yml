@@ -17,16 +17,16 @@ jobs:
         uses: actions/checkout@v4  # Use the latest version of actions
 
       - name: Set up JDK 21
-        uses: actions/setup-java@v4  # Updated to v3
+        uses: actions/setup-java@v4  # Updated to v4
         with:
           java-version: '21'
           distribution: 'temurin'  # Specify Java distribution (AdoptOpenJDK/Temurin)
 
       - name: Build with Maven (with Debugging)
-        run: mvn clean install -X  # Enable Maven's debug output (-X)
+        run: mvn clean install -X
 
       - name: Upload build artifact
-        uses: actions/upload-artifact@v4  # Use the latest version
+        uses: actions/upload-artifact@v4
         with:
           name: maven-build
           path: target/*.jar  # Path to the JAR file in the target/ folder
