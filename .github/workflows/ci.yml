@@ -23,7 +23,7 @@ jobs:
           distribution: 'temurin'  # Specify Java distribution (AdoptOpenJDK/Temurin)
 
       - name: Build with Maven (with Debugging)
-        run: mvn clean install -X  # Enable Maven's debug output (-X)
+        run: mvn clean install -P production -X  # Enable Maven's debug output (-X)
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v4  # Use the latest version

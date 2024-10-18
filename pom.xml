@@ -18,6 +18,25 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
+  <profiles>
+  <!-- UAT profile configuration -->
+  <profile>
+    <id>uat</id>
+    <properties>
+      <env.name>UAT</env.name>
+      <db.url>jdbc:mysql://uat-db.example.com</db.url>
+    </properties>
+  </profile>
+
+    <profile>
+      <id>production</id>
+      <properties>
+        <env.name>Production</env.name>
+        <db.url>jdbc:mysql://prod-db.example.com</db.url>
+      </properties>
+    </profile>
+  </profiles>
+
   <!-- Dependencies -->
   <dependencies>
     <dependency>
