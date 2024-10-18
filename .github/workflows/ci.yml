@@ -3,10 +3,10 @@ name: Java CI
 on: # This is where we define the event triggers
   push:
     branches:
-      - main  # Triggers on pushes to the main branch
+      - master  # Triggers on pushes to the main branch
   pull_request:
     branches:
-      - main  # Triggers on pull requests to the main branch
+      - master  # Triggers on pull requests to the main branch
 
 jobs:
   build:
