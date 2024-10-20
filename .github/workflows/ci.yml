@@ -26,7 +26,7 @@ jobs:
         run: mvn clean install -P production -X  # Enable Maven's debug output (-X)
 
       - name: OWASP Dependency-Check Security Scan
-        uses: dependency-check/action@v2.0.4
+        uses: advanced-security/owasp-dependency-check-action@v3.1.0
         with:
             project: 'java-security-scan'
             format: 'ALL'  # Generates reports in all formats (HTML, XML, JSON, etc.)
