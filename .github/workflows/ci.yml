@@ -25,6 +25,7 @@ jobs:
       - name: Build with Maven (with Debugging)
         run: mvn clean install -P production -X  # Enable Maven's debug output (-X)
 
+
       - name: Download Dependency-Check
         uses: actions/download-artifact@v4  # Use the latest version
         with:
@@ -33,13 +34,13 @@ jobs:
 
       - name: Run Dependency-Check
         run: |
-          java -jar dependency-check-cli.jar -f XML -o report.xml
+                java -jar dependency-check-cli.jar -f XML -o report.xml
 
-      - name: Upload Dependency-Check report
-        uses: actions/upload-artifact@v4  # Use the latest version
-        with:
-          name: dependency-check-report
-          path: report.xml
+            - name: Upload Dependency-Check report
+              uses: actions/upload-artifact@v4  # Use the latest version
+              with:
+                name: dependency-check-report
+                path: report.xml
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v4  # Use the latest version
