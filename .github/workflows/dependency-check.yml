@@ -1,0 +1,39 @@
+name: OWASP Dependency-Check
+
+on:
+  push:
+    branches:
+      - main  # Trigger on push to the main branch
+  pull_request:
+    branches:
+      - main  # Trigger on pull request to the main branch
+
+jobs:
+  dependency-check:
+    runs-on: ubuntu-latest  # Use Ubuntu as the build environment
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4  # Use the latest version of actions
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4  # Updated to v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'  # Specify Java distribution (AdoptOpenJDK/Temurin) corretto,liberica,zulu temurin
+
+      - name: Download Dependency-Check
+        uses: actions/download-artifact@v4  # Use the latest version
+        with:
+          name: dependency-check
+          path: dependency-check
+
+      - name: Run Dependency-Check
+        run: |
+          java -jar dependency-check-cli.jar -f XML -o report.xml
+
+      - name: Upload Dependency-Check report
+        uses: actions/upload-artifact@v4  # Use the latest version
+        with:
+          name: dependency-check-report
+          path: report.xml

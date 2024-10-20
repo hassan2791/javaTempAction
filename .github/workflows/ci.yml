@@ -25,19 +25,6 @@ jobs:
       - name: Build with Maven (with Debugging)
         run: mvn clean install -P production -X  # Enable Maven's debug output (-X)
 
-      - name: OWASP Dependency-Check Security Scan
-        uses: advanced-security/owasp-dependency-check-action@v3.1.0
-        with:
-            project: 'java-security-scan'
-            format: 'ALL'  # Generates reports in all formats (HTML, XML, JSON, etc.)
-            scan: './'  # Scans the current directory
-            outputDirectory: './dependency-check-report'  # Outputs report in this directory
-
-      - name: Upload Dependency-Check Report
-        uses: actions/upload-artifact@v4
-        with:
-                name: dependency-check-report
-                path: ./dependency-check-report
       - name: Upload build artifact
         uses: actions/upload-artifact@v4  # Use the latest version
         with:
