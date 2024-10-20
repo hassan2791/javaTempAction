@@ -20,7 +20,7 @@ jobs:
         uses: actions/setup-java@v4  # Updated to v4
         with:
           java-version: '21'
-          distribution: 'temurin'  # Specify Java distribution (AdoptOpenJDK/Temurin)
+          distribution: 'temurin'  # Specify Java distribution (AdoptOpenJDK/Temurin) corretto,liberica,zulu temurin
 
       - name: Build with Maven (with Debugging)
         run: mvn clean install -P production -X  # Enable Maven's debug output (-X)
